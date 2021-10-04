@@ -1,8 +1,7 @@
 {
   "name": "color-models",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "An object-oriented approach to represent color models",
-  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "lint": "eslint --cache \"**/*.ts\"",
