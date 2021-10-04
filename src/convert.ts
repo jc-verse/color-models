@@ -41,8 +41,7 @@ export function HSVToRGB(value: HSV): RGB {
       return [0, x, c] as RGB;
     if (h >= 240 && h < 300)
       return [x, 0, c] as RGB;
-    if (h >= 300 && h < 360)
-      return [c, 0, x] as RGB;
+    return [c, 0, x] as RGB;
   })();
   return raw.map((v) => Math.round((v + m) * 255)) as RGB;
 }
@@ -50,9 +49,8 @@ export function HSVToRGB(value: HSV): RGB {
 export function HexToRGB(value: Hex): RGB {
   value = value.startsWith("#") ? value.substring(1) as Hex : value;
   if (value.length === 3)
-    return value.match(/./g).map((c) => parseInt(`${c}${c}`, 16)) as RGB;
-  if (value.length === 6)
-    return value.match(/../g).map((c) => parseInt(c, 16)) as RGB;
+    return value.match(/./g)!.map((c) => parseInt(`${c}${c}`, 16)) as RGB;
+  return value.match(/../g)!.map((c) => parseInt(c, 16)) as RGB;
 }
 
 export function RGBToHex(value: RGB): Hex {

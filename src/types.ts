@@ -1,4 +1,4 @@
-type Color<Model, ID> = Model & {__model: ID};
+type Color<Model, ID extends string> = Model & {__model: ID};
 
 export type HSV = Color<[number, number, number], "hsv">;
 export type HSL = Color<[number, number, number], "hsl">;

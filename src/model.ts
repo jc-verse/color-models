@@ -1,5 +1,3 @@
-/* eslint-disable grouped-accessor-pairs */
-/* eslint-disable @typescript-eslint/adjacent-overload-signatures */
 import {
   HSV,
   HSL,
@@ -39,12 +37,19 @@ export class Color {
         throw new Error(`Bad HSV initializer: ${value}`);
       this.hsvModel = value;
       break;
-    case "hsl": break;
+    case "hsl":
+      throw new Error("Not implemented");
+      break;
+    case "cmyk":
+      throw new Error("Not implemented");
+      break;
     case "hex":
       if (!isHex(value))
         throw new Error(`Bad HSV initializer: ${value}`);
       this.hsvModel = HexToHSV(value);
       break;
+    default:
+      throw new Error(`Unknown color model: ${model}`);
     }
   }
 
@@ -53,25 +58,24 @@ export class Color {
     return HSVToRGB(this.hsvModel);
   }
 
-  get HSV(): HSV {
-    return this.hsvModel;
-  }
-
-  get Hex(): Hex {
-    return HSVToHex(this.hsvModel);
-  }
-
-  // Setters
   set RGB(value: [number, number, number]) {
     if (!isRGB(value))
       throw new Error(`Bad RGB initializer: ${value}`);
     this.hsvModel = RGBToHSV(value);
   }
 
+  get HSV(): HSV {
+    return this.hsvModel;
+  }
+
   set HSV(value: [number, number, number]) {
     if (!isHSV(value))
       throw new Error(`Bad HSV initializer: ${value}`);
     this.hsvModel = value;
+  }
+
+  get Hex(): Hex {
+    return HSVToHex(this.hsvModel);
   }
 
   set Hex(value: string) {
