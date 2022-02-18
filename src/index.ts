@@ -1,3 +1,8 @@
-export * from "./model";
-export * from "./convert";
-export * from "./types";
+export {Color} from "./model";
+export type {
+  HSV,
+  HSL,
+  RGB,
+  CMYK,
+  Hex,
+} from "./types";
